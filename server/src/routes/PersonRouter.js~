@@ -1,8 +1,8 @@
 const express = require("express");
-const CPO = require("../models/cpo.js");
-const cpoRouter = express.Router();
+const Person = require("models/Person.js");
+const CPORouter = express.Router();
 
-cpoRouter.route("/")
+CPORouter.route("/")
 	.get((req,res) => {
 		CPO.find({}, (err, cpos) => {
 			res.json(cpos);
@@ -15,11 +15,10 @@ cpoRouter.route("/")
 	});
 ;
 
-
-cpoRouter.route("/:cpoId")
+CPORouter.route("/:CPOId")
 	.get((req,res) => {
-		CPO.findById(req.params.bookId, (err, cpo) => {
+		CPO.findById(req.params.CPOId, (err, cpo) => {
 			res.json(cpo);
 		});
 	});
-module.exports = cpoRouter;
+module.exports = CPORouter;

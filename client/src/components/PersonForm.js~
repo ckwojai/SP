@@ -1,0 +1,13 @@
+import React, { Component } from 'react';
+
+class PersonForm extends Components {
+	render() {
+		return (
+			<fieldset>
+			  <label>name</label>
+			</fieldset>
+		);
+	}
+};
+
+export default PersonForm

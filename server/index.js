@@ -4,10 +4,15 @@ const express = require('express');
 const http = require('http');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const router = require('./router');
 const mongoose = require('mongoose');
-const cpoRouter = require('./routes/cpoRouter');
+const cors = require('cors');
+
+
+const CPORouter = require('./src/routes/CPORouter.js');
+const PersonRouter = require('./src/routes/PersonRouter.js');
+
 const app = express();
+
 
 // DB Setup
 mongoose.connect('mongodb://localhost/sp_database', { useNewUrlParser: true});
@@ -15,8 +20,11 @@ mongoose.connect('mongodb://localhost/sp_database', { useNewUrlParser: true});
 // App Setup
 // app.use address argument as middleware
 app.use(morgan('combined')); 	// morgan is just a logging framework incoming request, used for debugging
+app.use(cors());
 app.use(bodyParser.json({ type: '*/*' })); // Parse incoming request to json
-app.use('/api/cpo', cpoRouter);
+
+app.use('/api/cpo', CPORouter);
+app.use('/api/person', PersonRouter);
 
 // Server Setup
 const port = process.env.PORT || 3090;
