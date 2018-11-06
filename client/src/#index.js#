@@ -7,8 +7,6 @@ import reduxThunk from 'redux-thunk';
 
 import App from './components/App.js';  
 import PersonForm from './components/PersonForm.js';
-import CPOForm from './components/CPOForm.js';
-import PersonList from './components/PersonList.js';
 import reducers from './reducers';
 
 const store = createStore(
@@ -22,8 +20,6 @@ ReactDOM.render(
 	  <BrowserRouter>
 		<App>
 		  <Route path="/newperson" component={PersonForm} />
-		  <Route path="/newcpo" component={CPOForm} />		  
-		  <Route path="/personlist" component={PersonList} />		  
 		</App>
 	  </BrowserRouter>
 	</Provider>	

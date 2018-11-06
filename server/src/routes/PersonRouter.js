@@ -8,10 +8,16 @@ PersonRouter.route("/")
 			res.json(people);
 		});
 	})
-	.post((req,res) => {
+	.post((req,res, next) => {
 		let person = new Person(req.body);
-		person.save();
-		res.status(201).send(person);
+		person.save( (err) => {
+			if (err) {
+				res.status(422).send(err.message);
+				return next(err);
+			}
+			res.status(201).send(person);			
+		});
+
 	});
 ;
 
