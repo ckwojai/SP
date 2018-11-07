@@ -8,13 +8,17 @@ CPORouter.route("/")
 			res.json(cpos);
 		});
 	})
-	.post((req,res) => {
+	.post((req,res, next) => {
 		let cpo = new CPO(req.body);
-		cpo.save();
+		cpo.save((err) => {
+			if (err) {
+				res.status(422).send(err.message);
+				return next(err);
+		}
 		res.status(201).send(cpo);
+		});
 	});
 ;
-
 CPORouter.route("/:CPOId")
 	.get((req,res) => {
 		CPO.findById(req.params.CPOId, (err, cpo) => {
