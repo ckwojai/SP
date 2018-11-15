@@ -62,6 +62,7 @@ class CPOForm extends Component {
 			  <fieldset>
 				<label>Salesperson</label>
 				<Field name="salesperson" component="select">
+				  <option key="something" value=""></option>
 				  {this.createPeopleOptions()}
        			</Field>
 			  </fieldset>

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { NEW_PERSON, NEW_CPO, FETCH_PEOPLE } from './types.js';
+import { NEW_PERSON, NEW_CPO, FETCH_PEOPLE, FETCH_CPO } from './types.js';
 
 export const newperson = (formProps) => async dispatch => {
 	const response = await axios.post('http://localhost:3090/api/person', formProps);
@@ -29,6 +29,17 @@ export const fetchPeople = () => async dispatch => {
 	dispatch(
 		{
 			type: FETCH_PEOPLE,
+			payload: response.data
+		}
+	);
+};
+export const fetchCPO = () => async dispatch => {
+	console.log("inside fetchCPO");	
+	const response = await axios.get('http://localhost:3090/api/cpo');
+	console.log(response.data);
+	dispatch(
+		{
+			type: FETCH_CPO,
 			payload: response.data
 		}
 	);

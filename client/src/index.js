@@ -9,7 +9,9 @@ import App from './components/App.js';
 import PersonForm from './components/PersonForm.js';
 import CPOForm from './components/CPOForm.js';
 import PersonList from './components/PersonList.js';
+import CPOList from './components/CPOList.js';
 import reducers from './reducers';
+
 
 const store = createStore(
 	reducers,
@@ -24,6 +26,7 @@ ReactDOM.render(
 		  <Route path="/newperson" component={PersonForm} />
 		  <Route path="/newcpo" component={CPOForm} />		  
 		  <Route path="/personlist" component={PersonList} />		  
+		  <Route path="/CPOlist" component={CPOList} />		  
 		</App>
 	  </BrowserRouter>
 	</Provider>	
