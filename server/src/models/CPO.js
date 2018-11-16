@@ -13,7 +13,7 @@ const address_object = {
         required: true,
         enum: statesArray
     },
-    zip: Number
+    zip: String
 };
 // Define our model
 const CPOSchema = new Schema({
