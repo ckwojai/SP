@@ -56,7 +56,7 @@ class CPOTable extends Component {
 		} else {
 		return this.props.CPO.map( (temp_cpo) => {
 			return (
-				<TableRow className={classes.row} key={temp_cpo.CPO_num}>
+				<TableRow className={classes.row} key={temp_cpo._id}>
 				  <CustomTableCell>{temp_cpo.CPO_num}</CustomTableCell>
 				  <CustomTableCell>{temp_cpo.issue_date}</CustomTableCell>
 				  <CustomTableCell>{temp_cpo.salesperson}</CustomTableCell>

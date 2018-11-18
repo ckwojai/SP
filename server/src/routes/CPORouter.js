@@ -26,7 +26,7 @@ CPORouter.route("/:CPOId")
 			res.json(cpo);
 		});
 	})
-	.update((req, res, next) => {
+	.put((req, res, next) => {
 		let id = req.params.CPOId;
 		let cpo = req.body;
 		CPO.findByIdAndUpdate(id, cpo, (err, updatedCPO) => {

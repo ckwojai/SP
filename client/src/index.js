@@ -11,6 +11,7 @@ import CPOForm from './components/CPOForm.js';
 import PersonList from './components/PersonList.js';
 import CPOList from './components/CPOList.js';
 import CPOTable from './components/CPOTable.js';
+import CPOUpdateForm from './components/CPOUpdateForm.js';
 import reducers from './reducers';
 
 
@@ -29,6 +30,7 @@ ReactDOM.render(
 		  <Route path="/personlist" component={PersonList} />		  
 		  <Route path="/CPOList" component={CPOList} />
 		  <Route path="/CPOTable" component={CPOTable} />		  		  
+		  <Route path="/CPOUpdateForm" render={() => <CPOUpdateForm arrIndex="0"/>} />		  		  
 		</App>
 	  </BrowserRouter>
 	</Provider>	
