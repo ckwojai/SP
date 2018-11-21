@@ -4,6 +4,8 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import App from './components/App.js';  
 import PersonForm from './components/PersonForm.js';
@@ -23,6 +25,7 @@ const store = createStore(
 
 ReactDOM.render(
 	<Provider store = { store }>
+	  <MuiThemeProvider muiTheme={getMuiTheme()}>
 	  <BrowserRouter>
 		<App>
 		  <Route path="/newperson" component={PersonForm} />
@@ -30,9 +33,10 @@ ReactDOM.render(
 		  <Route path="/personlist" component={PersonList} />		  
 		  <Route path="/CPOList" component={CPOList} />
 		  <Route path="/CPOTable" component={CPOTable} />		  		  
-		  <Route path="/CPOUpdateForm" render={() => <CPOUpdateForm arrIndex="0"/>} />		  		  
+		  <Route path="/CPOUpdateForm" render={() => <CPOUpdateForm arrIndex="5"/>} />		  		  
 		</App>
 	  </BrowserRouter>
+	  </MuiThemeProvider>	  
 	</Provider>	
 		,
 	document.querySelector('#root')

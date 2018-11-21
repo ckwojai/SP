@@ -3,22 +3,41 @@ import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import * as actions from "../actions";
-import DayPickerInput from 'react-day-picker/DayPickerInput';
-import 'react-day-picker/lib/style.css';
 
-const DayPickerComponent = (props) => {
-	console.log(props);
-	return (
-		<DayPickerInput
-		  value = {props.input.value}
-		  onDayChange={props.input.onChange}							
-		  />
-	);
-};
+import { withStyles } from '@material-ui/core/styles';
+import MenuItem from 'material-ui/MenuItem';
+import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
+import SaveIcon from '@material-ui/icons/Save';
+import classNames from 'classnames';
+import {
+	SelectField,
+	TextField,
+	DatePicker
+} from 'redux-form-material-ui';
 
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit,
+  },
+  leftIcon: {
+    marginRight: theme.spacing.unit,
+  },
+  rightIcon: {
+    marginLeft: theme.spacing.unit,
+  },
+  iconSmall: {
+    fontSize: 20,
+  },
+});
+const required = value => (value == null ? 'Required' : undefined);
 class CPOForm extends Component {
 	componentDidMount() {
 		this.props.fetchPeople();
+		this.ref // the Field
+			.getRenderedComponent() // on Field, returns ReduxFormMaterialUITextField
+			.getRenderedComponent() // on ReduxFormMaterialUITextField, returns TextField
+			.focus(); // on TextField				
 	}
 	onSubmit = (formProps) => {
 		console.log(formProps);
@@ -26,89 +45,111 @@ class CPOForm extends Component {
 	};
 	createPeopleOptions() {
 		if (Object.keys(this.props.people).length === 0) {
-			return <option />;
+			return <MenuItem value="" primaryText="" />;
 		} else {
 			console.log(this.props.people);							
 			return this.props.people.map((person) => {
 				return (
-					<option key={person._id} value={person._id}>{person.name + "," + person.position}</option>
+					<MenuItem key={person._id} value={person._id} primaryText={person.name} />
 				);
 			});			
 		}
 		
 	}
+	saveRef = ref => (this.ref = ref)			
 	render() {
-		const { handleSubmit } = this.props;
+		const { classes, handleSubmit } = this.props;
 		return (
 			<form onSubmit={handleSubmit(this.onSubmit)}>
-			  <fieldset>
-				<label>CPO#</label>
-				<Field
-				  name="CPO_num"
-				  type="text"
-				  component="input"
-				  autoComplete="none"
-				  />
-			  </fieldset>
-			  <fieldset>
-				<label>Issue Date</label>
-				<Field
-				  name="issue_date"
-				  autoComplete="none"
-				  type="text"
-				  component = { DayPickerComponent }
-				  />
-			  </fieldset>
-			  <fieldset>
-				<label>Salesperson</label>
-				<Field name="salesperson" component="select">
-				  <option key="something" value=""></option>
+			  <div>
+			  <Field
+				name="CPO_num"
+				hintText="CPO#"
+				floatingLabelText="CPO#"
+				validate={required}
+				ref={this.saveRef}
+				withRef
+				component={TextField}
+				/>
+			  </div>
+			  <div>
+			  <Field
+				name="issue_date"
+				component={DatePicker}
+				format={null}
+				floatingLabelText="Issue Date"
+				hintText="Issue Date?"
+				validate={required}
+				/>
+			  </div>
+			  <div>
+			  <Field
+				name="salesperson"
+				component={SelectField}
+				hintText="Salesperson"
+				floatingLabelText="Salesperson"
+				validate={required}
+				>
 				  {this.createPeopleOptions()}
-       			</Field>
-			  </fieldset>
-			  <fieldset>
-				<label>Company</label>
-				<Field name="company_name" component="input" />
-			  </fieldset>
-			  <fieldset>
-				<label>bill-to-address</label>
+       		  </Field>
+			  </div>
+			  <div>
+			  <Field name="company_name"
+					 hintText="Company"
+					 floatingLabelText="Company"
+					 validate={required}
+					 ref={this.saveRef}
+					 withRef
+					 component={TextField}					 
+					 />
+			  </div>
+			  <div>
 				<Field
 				  name="bill_to_address.name"
-				  type="text"
-				  component="input"
-				  autoComplete="none"
-				  placeholder="name"
+				  hintText="Name"
+				  floatingLabelText="Bill-to Address"
+				  validate={required}
+				  ref={this.saveRef}
+				  withRef
+				  component={TextField}					 				  
 				  />
 				<Field
 				  name="bill_to_address.street"
-				  type="text"
-				  component="input"
-				  autoComplete="none"
-				  placeholder="street"
+				  hintText="Street"
+				  validate={required}
+				  ref={this.saveRef}
+				  withRef
+				  component={TextField}					 				  
 				  />
 				<Field
 				  name="bill_to_address.city"
-				  type="text"
-				  component="input"
-				  autoComplete="none"
-				  placeholder="city"
+				  hintText="City"
+				  validate={required}
+				  ref={this.saveRef}
+				  withRef
+				  component={TextField}					 				  
 				  />
 				<Field
 				  name="bill_to_address.state"
-				  type="text"
-				  component="input"
-				  autoComplete="none"
-				  placeholder="state"
+				  hintText="State"
+				  validate={required}
+				  ref={this.saveRef}
+				  withRef
+				  component={TextField}					 				  
 				  />
 				<Field
 				  name="bill_to_address.zip"
-				  type="number"
-				  component="input"
-				  autoComplete="none"
-				  placeholder="zip"
+				  hintText="Zip"
+				  validate={required}
+				  ref={this.saveRef}
+				  withRef
+				  component={TextField}					 				  
 				  />							
-			  </fieldset>			
-			  <button>Submit</button>
+			  </div>
+			  <Button type="submit" variant="contained" size="small" className={classes.button}>
+				<SaveIcon className={classNames(classes.leftIcon, classes.iconSmall)} />
+				Submit
+			  </Button>			  
 			</form>
 		);
 	}
@@ -117,6 +158,7 @@ function mapStateToProps(state) {
 	return {people: state.people};
 };
 export default compose(
+	withStyles(styles),
 	connect(mapStateToProps, actions),
 	reduxForm({ form: 'CPOForm'})
 )(CPOForm);
