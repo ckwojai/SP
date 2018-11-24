@@ -7,7 +7,8 @@ import reduxThunk from 'redux-thunk';
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
-import App from './components/App.js';  
+import App from './components/App.js';
+import Test from './components/Test.js';
 import PersonForm from './components/PersonForm.js';
 import CPOForm from './components/CPOForm.js';
 import PersonList from './components/PersonList.js';
@@ -33,7 +34,8 @@ ReactDOM.render(
 		  <Route path="/personlist" component={PersonList} />		  
 		  <Route path="/CPOList" component={CPOList} />
 		  <Route path="/CPOTable" component={CPOTable} />		  		  
-		  <Route path="/CPOUpdateForm" render={() => <CPOUpdateForm arrIndex="5"/>} />		  		  
+		  <Route path="/CPOUpdateForm" render={() => <CPOUpdateForm arrIndex="0"/>} />		  		  
+		  <Route path="/test" component={Test} />		  		  
 		</App>
 	  </BrowserRouter>
 	  </MuiThemeProvider>	  

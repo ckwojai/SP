@@ -8,6 +8,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+import UpdateFormDialog from '../components/UpdateFormDialog.js';
+
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import * as actions from "../actions";
@@ -54,14 +56,15 @@ class CPOTable extends Component {
 				</TableRow>
 			);
 		} else {
-		return this.props.CPO.map( (temp_cpo) => {
+			return this.props.CPO.map( (temp_cpo, index) => {
 			return (
 				<TableRow className={classes.row} key={temp_cpo._id}>
 				  <CustomTableCell>{temp_cpo.CPO_num}</CustomTableCell>
 				  <CustomTableCell>{temp_cpo.issue_date}</CustomTableCell>
 				  <CustomTableCell>{temp_cpo.salesperson}</CustomTableCell>
 				  <CustomTableCell>{temp_cpo.company_name}</CustomTableCell>
-				  <CustomTableCell>{Address2Str(temp_cpo.bill_to_address)}</CustomTableCell>							
+				  <CustomTableCell>{Address2Str(temp_cpo.bill_to_address)}</CustomTableCell>
+				  <CustomTableCell><UpdateFormDialog arrIndex = {index} /></CustomTableCell>
 				</TableRow>
 			);
 
@@ -81,6 +84,7 @@ class CPOTable extends Component {
 					<CustomTableCell>Salesperson</CustomTableCell>
 					<CustomTableCell>Company</CustomTableCell>
 					<CustomTableCell>Bill to Address</CustomTableCell>
+					<CustomTableCell>Edit</CustomTableCell>					
 				  </TableRow>
 				</TableHead>
 				<TableBody>

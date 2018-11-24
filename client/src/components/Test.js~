@@ -7,7 +7,8 @@ export default ({ children }) => {
 	return (
 		<div>
 		  <Header />
-		  {children}
+		  <CPOUpdateForm arrIndex="1"/>
+		  <CPOTable />		  
 		</div>
 	);
 };

@@ -20,6 +20,7 @@ export const newCPO = (formProps) => async dispatch => {
 			payload: response.data
 		}
 	);
+	dispatch(fetchCPO());
 };
 export const fetchCPO = () => async dispatch => {
 	console.log("inside fetchCPO");	
@@ -40,7 +41,7 @@ export const updateCPO = (formProps, id) => async dispatch => {
 			payload: response.data
 		}
 	);
-	fetchCPO();
+	dispatch(fetchCPO());	
 };
 
 export const fetchPeople = () => async dispatch => {

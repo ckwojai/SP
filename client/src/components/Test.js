@@ -6,8 +6,7 @@ import CPOTable from './CPOTable.js';
 export default ({ children }) => {
 	return (
 		<div>
-		  <Header />
-		  {children}
+		  <CPOTable />		  
 		</div>
 	);
 };
