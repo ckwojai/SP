@@ -1,15 +1,7 @@
 import axios from 'axios';
 import { NEW_PERSON, NEW_CPO, FETCH_PEOPLE, FETCH_CPO, UPDATE_CPO } from './types.js';
 
-export const newperson = (formProps) => async dispatch => {
-	const response = await axios.post('http://localhost:3090/api/person', formProps);
-	dispatch(
-		{
-			type: NEW_PERSON,
-			payload: response.data
-		}
-	);
-};
+
 
 
 export const newCPO = (formProps) => async dispatch => {
@@ -42,6 +34,17 @@ export const updateCPO = (formProps, id) => async dispatch => {
 		}
 	);
 	dispatch(fetchCPO());	
+};
+
+export const newperson = (formProps) => async dispatch => {
+	const response = await axios.post('http://localhost:3090/api/person', formProps);
+	dispatch(
+		{
+			type: NEW_PERSON,
+			payload: response.data
+		}
+	);
+	dispatch(fetchPeople());
 };
 
 export const fetchPeople = () => async dispatch => {

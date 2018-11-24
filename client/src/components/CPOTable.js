@@ -8,7 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-import UpdateFormDialog from '../components/UpdateFormDialog.js';
+import CPOUpdateDialog from '../components/CPOUpdateDialog.js';
 
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -64,7 +64,7 @@ class CPOTable extends Component {
 				  <CustomTableCell>{temp_cpo.salesperson}</CustomTableCell>
 				  <CustomTableCell>{temp_cpo.company_name}</CustomTableCell>
 				  <CustomTableCell>{Address2Str(temp_cpo.bill_to_address)}</CustomTableCell>
-				  <CustomTableCell><UpdateFormDialog arrIndex = {index} /></CustomTableCell>
+				  <CustomTableCell><CPOUpdateDialog arrIndex = {index} /></CustomTableCell>
 				</TableRow>
 			);
 
