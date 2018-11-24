@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
+
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
@@ -10,9 +10,6 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import CPOUpdateForm from './CPOUpdateForm.js';
 
 export default class UpdateFormDialog extends React.Component {
-	constructor(props) {
-		super(props);
-	}
   state = {
     open: false,
   };
@@ -39,16 +36,8 @@ export default class UpdateFormDialog extends React.Component {
         >
           <DialogTitle id="form-dialog-title">Edit</DialogTitle>
           <DialogContent>
-			<CPOUpdateForm ref = {this.formRef} arrIndex = {this.props.arrIndex} />
+			<CPOUpdateForm arrIndex = {this.props.arrIndex} handleClose={this.handleClose} />
           </DialogContent>
-          <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
-              Cancel
-            </Button>
-            <Button onClick={this.handleSave} color="primary">
-               Subscribe
-            </Button>
-          </DialogActions>
         </Dialog>
       </div>
     );

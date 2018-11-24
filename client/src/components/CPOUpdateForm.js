@@ -7,14 +7,14 @@ import * as actions from "../actions";
 import { withStyles } from '@material-ui/core/styles';
 import MenuItem from 'material-ui/MenuItem';
 import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
-import SaveIcon from '@material-ui/icons/Save';
 import classNames from 'classnames';
 import {
 	SelectField,
 	TextField,
 	DatePicker
-} from 'redux-form-material-ui'
+} from 'redux-form-material-ui';
+
+import DialogActions from '@material-ui/core/DialogActions';
 
 const styles = theme => ({
   button: {
@@ -52,6 +52,7 @@ class CPOUpdateForm extends Component {
 		const objectId = this.props.CPO[this.props.arrIndex]._id;
 		console.log("logging objectid");
 		console.log(objectId);
+		this.props.handleClose();
 		this.props.updateCPO(formProps, objectId);
 	};
 	createPeopleOptions() {
@@ -157,10 +158,14 @@ class CPOUpdateForm extends Component {
 				  component={TextField}					 				  
 				  />							
 			  </div>
-			  <Button type="submit" variant="contained" size="small" className={classes.button}>
-				<SaveIcon className={classNames(classes.leftIcon, classes.iconSmall)} />
-				Save
-			  </Button>			  
+			  <DialogActions>
+				<Button onClick={this.props.handleClose} color="primary">
+				  Cancel
+				</Button>			  
+				<Button type="submit" color="primary">
+				  Save
+				</Button>
+			  </DialogActions>
 			</form>
 		);
 	}
