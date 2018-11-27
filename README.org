@@ -1,0 +1,23 @@
+* Workflow
+** Stage 1
+   - Create CPO
+
+* Data Structure
+  - CPO
+	+ CPO#
+	+ Issue Date
+	+ Account Manager
+	+ Company
+	+ End User
+	+ Ship-to # 
+	+ Sold-to #
+	+ Training Item (array)
+	  - Description
+	  - SKU #
+	  - Cost
+  - 
+  - 
+  - 
+  - 
+  - 
+

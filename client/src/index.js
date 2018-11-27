@@ -15,6 +15,7 @@ import PersonList from './components/PersonList.js';
 import CPOList from './components/CPOList.js';
 import CPOTable from './components/CPOTable.js';
 import CPOUpdateForm from './components/CPOUpdateForm.js';
+import SideBar from './components/SideBar.js';
 import reducers from './reducers';
 
 
@@ -27,17 +28,17 @@ const store = createStore(
 ReactDOM.render(
 	<Provider store = { store }>
 	  <MuiThemeProvider muiTheme={getMuiTheme()}>
-	  <BrowserRouter>
-		<App>
-		  <Route path="/newperson" component={PersonForm} />
-		  <Route path="/newcpo" component={CPOForm} />		  
-		  <Route path="/personlist" component={PersonList} />		  
-		  <Route path="/CPOList" component={CPOList} />
-		  <Route path="/CPOTable" component={CPOTable} />		  		  
-		  <Route path="/CPOUpdateForm" render={() => <CPOUpdateForm arrIndex="0"/>} />		  		  
-		  <Route path="/test" component={Test} />		  		  
-		</App>
-	  </BrowserRouter>
+		<BrowserRouter>
+		  <App>
+			<Route path="/newperson" component={PersonForm} />
+			<Route path="/newcpo" component={CPOForm} />		  
+			<Route path="/personlist" component={PersonList} />		  
+			<Route path="/CPOList" component={CPOList} />
+			<Route path="/CPOTable" component={CPOTable} />		  		  
+			<Route path="/test" component={Test} />		  		  
+			<Route path="/sidebar" component={SideBar} />		  		  
+		  </App>
+		</BrowserRouter>
 	  </MuiThemeProvider>	  
 	</Provider>	
 		,
