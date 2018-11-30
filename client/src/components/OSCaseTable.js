@@ -23,7 +23,7 @@ class OSCaseTable extends Component {
 	createOSCasePanel() {
 		return (
 			this.props.OSCase.map((tempCase, index) => {
-				return ( <OSCasePanel arrIndex={index} />
+				return ( <OSCasePanel key = {index} arrIndex={index} />
 					   );
 			})
 		);

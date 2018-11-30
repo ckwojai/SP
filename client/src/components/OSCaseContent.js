@@ -13,7 +13,7 @@ import * as actions from "../actions";
 
 import OSCaseStepper from './OSCaseStepper.js';
 import CPOUpdateForm from './CPOUpdateForm.js';
-import OSCaseContent from './OSCaseContent.js';
+import OSCaseCPOForm from './OSCaseCPOForm.js';
 
 const styles = theme => ({
 	root: {
@@ -25,29 +25,19 @@ const styles = theme => ({
 	},
 });
 
-class OSCasePanel extends Component {
+class OSCaseContent extends Component {
 	render() {
 		const { classes } = this.props;
 		return (
-			<ExpansionPanel>
-			  <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-				<Typography className={classes.heading}>{this.props.OSCase.state}</Typography>
-			  </ExpansionPanelSummary>
-			  <ExpansionPanelDetails>
 				<div>
-				  <OSCaseStepper arrIndex={this.props.arrIndex} />				  
+				  <OSCaseCPOForm arrIndex={this.props.arrIndex}/>
 				</div>
-				<div>
-				  <OSCaseContent arrIndex={this.props.arrIndex} />
-				</div>
-			  </ExpansionPanelDetails>
-			</ExpansionPanel>
 		);
 	}
 }
 
 
-OSCasePanel.propTypes = {
+OSCaseContent.propTypes = {
 	classes: PropTypes.object.isRequired,
 };
 function mapStateToProps(state, ownProps) {
@@ -57,6 +47,6 @@ export default compose (
 	withStyles(styles),
 	connect(mapStateToProps, actions)
 )
-(OSCasePanel);
+(OSCaseContent);
 
 

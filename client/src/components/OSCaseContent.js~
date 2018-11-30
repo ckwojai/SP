@@ -13,7 +13,6 @@ import * as actions from "../actions";
 
 import OSCaseStepper from './OSCaseStepper.js';
 import CPOUpdateForm from './CPOUpdateForm.js';
-import OSCaseContent from './OSCaseContent.js';
 
 const styles = theme => ({
 	root: {
@@ -38,7 +37,7 @@ class OSCasePanel extends Component {
 				  <OSCaseStepper arrIndex={this.props.arrIndex} />				  
 				</div>
 				<div>
-				  <OSCaseContent arrIndex={this.props.arrIndex} />
+				  <CPOUpdateForm arrIndex={this.props.arrIndex} />
 				</div>
 			  </ExpansionPanelDetails>
 			</ExpansionPanel>
