@@ -3,21 +3,43 @@
    - Create CPO
 
 * Data Structure
+* State 1: Customer
+  - Billing
+	+ SAP
+	  - SAP#
+	  - Ship-to #
+	  - Sold-to #
   - CPO
 	+ CPO#
 	+ Issue Date
 	+ Account Manager
 	+ Company
 	+ End User
-	+ Ship-to # 
-	+ Sold-to #
 	+ Training Item (array)
 	  - Description
 	  - SKU #
 	  - Cost
-  - 
-  - 
-  - 
-  - 
-  - 
 
+* Stage 2: Trainer
+  - Training Details
+	+ Date
+	+ Trainer
+	+ Location
+	+ POC
+  - Billing
+	+ SRM
+	  - SPO#
+	  - TQ#
+	  - Proposed Amount
+	+ 
+	
+* Stage 3: Billing
+  - Billing
+	+ SAP
+	  - Exact T&E
+	  - Processed Date
+    + SRM
+	  - Invoice#
+	  - Invoiced Amount
+	  - GR#
+	  - Processed Date

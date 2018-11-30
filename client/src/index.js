@@ -16,6 +16,9 @@ import CPOList from './components/CPOList.js';
 import CPOTable from './components/CPOTable.js';
 import CPOUpdateForm from './components/CPOUpdateForm.js';
 import SideBar from './components/SideBar.js';
+import OSCasePanel from './components/OSCasePanel.js';
+import OSCaseTable from './components/OSCaseTable.js';
+
 import reducers from './reducers';
 
 
@@ -35,7 +38,7 @@ ReactDOM.render(
 			<Route path="/personlist" component={PersonList} />		  
 			<Route path="/CPOList" component={CPOList} />
 			<Route path="/CPOTable" component={CPOTable} />		  		  
-			<Route path="/test" component={Test} />		  		  
+			<Route path="/test" component={OSCaseTable} />		  		  
 			<Route path="/sidebar" component={SideBar} />		  		  
 		  </App>
 		</BrowserRouter>

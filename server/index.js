@@ -10,7 +10,7 @@ const cors = require('cors');
 
 const CPORouter = require('./src/routes/CPORouter.js');
 const PersonRouter = require('./src/routes/PersonRouter.js');
-
+const OSCaseRouter = require('./src/routes/OSCaseRouter.js');
 const app = express();
 
 
@@ -25,6 +25,7 @@ app.use(bodyParser.json({ type: '*/*' })); // Parse incoming request to json
 
 app.use('/api/cpo', CPORouter);
 app.use('/api/person', PersonRouter);
+app.use('/api/oscase', OSCaseRouter);
 
 // Server Setup
 const port = process.env.PORT || 3090;

@@ -1,4 +1,4 @@
-import { NEW_PERSON, FETCH_PEOPLE, FETCH_CPO, UPDATE_CPO, FETCH_OSCASES } from '../actions/types.js';
+import { NEW_PERSON, FETCH_PEOPLE, FETCH_CPO, UPDATE_CPO } from '../actions/types.js';
 
 const INITIAL_STATE = {
 }
