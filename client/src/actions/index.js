@@ -1,6 +1,16 @@
 import axios from 'axios';
-import { NEW_PERSON, NEW_CPO, FETCH_PEOPLE, FETCH_CPO, UPDATE_CPO, FETCH_OSCASES, UPDATE_OSCASES } from './types.js';
+import { NEW_PERSON, NEW_CPO, FETCH_PEOPLE, FETCH_CPO, UPDATE_CPO, FETCH_OSCASES, UPDATE_OSCASES, NEW_OSCASE } from './types.js';
 
+export const newOSCase = (formProps) => async dispatch => {
+	const response = await axios.post('http://localhost:3090/api/OSCase', formProps);
+	dispatch(
+		{
+			type: NEW_OSCASE,
+			payload: response.data
+		}
+	);
+	dispatch(fetchOSCases());
+};
 export const newCPO = (formProps) => async dispatch => {
 	const response = await axios.post('http://localhost:3090/api/CPO', formProps);
 	dispatch(

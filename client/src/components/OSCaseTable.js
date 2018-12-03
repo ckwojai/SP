@@ -7,6 +7,8 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import * as actions from "../actions";
 
+import Button from '@material-ui/core/Button';
+
 function Address2Str(obj) {
 	return obj.name + ", " + obj.street + ", " + obj.city + ", " + obj.state + " " + obj.zip;
 }
@@ -28,6 +30,10 @@ class OSCaseTable extends Component {
 			})
 		);
 	}
+    newOSCase = () => {
+        console.log(this.props);
+        this.props.newOSCase({state: "0"});
+    }
 	render() {
 		const { classes } = this.props;
 		console.log("This.props.OSCase");
@@ -36,13 +42,17 @@ class OSCaseTable extends Component {
 		if (Object.keys(this.props.OSCase).length === 0) {
 			console.log("Inside == 0");
 			return (
-				<div>Loading</div>
+				<div>
+                  <Button color="primary" onClick = {this.newOSCase}>New Case</Button>
+                </div>
+
 			);
 		}
 		else {
 			console.log("Inside =!= 0");
 		return (
 			<div className={classes.root}>
+              <Button color="primary" onClick = {this.newOSCase}>New Case</Button>
 			  {this.createOSCasePanel()}
 			</div>
 		);

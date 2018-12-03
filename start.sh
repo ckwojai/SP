@@ -1,4 +1,4 @@
 #!/bin/bash
 cd server && pm2 start npm --no-automation --name server -- run dev
 cd ../client && pm2 start npm --no-automation --name client -- start
-mongod
+sudo mongod

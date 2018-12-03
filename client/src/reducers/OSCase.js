@@ -1,10 +1,12 @@
-import { FETCH_OSCASES } from '../actions/types.js';
+import { NEW_OSCASE, FETCH_OSCASES } from '../actions/types.js';
 
 const INITIAL_STATE = {
 }
 
 export default (state = INITIAL_STATE, action) => {
 	switch (action.type) {
+    case NEW_OSCASE:
+        return state;
 	case FETCH_OSCASES:
 		console.log("Previous State");
 		console.log(state);
