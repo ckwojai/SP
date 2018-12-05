@@ -30,7 +30,7 @@ class OSCaseContent extends Component {
 		const { classes } = this.props;
 		return (
 				<div>
-				  <OSCaseCPOForm arrIndex={this.props.arrIndex}/>
+				  <OSCaseCPOForm form={`OSCaseCPOForm_${this.props.arrIndex}`} arrIndex={this.props.arrIndex}/>
 				</div>
 		);
 	}

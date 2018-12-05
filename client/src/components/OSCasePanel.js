@@ -31,7 +31,7 @@ class OSCasePanel extends Component {
 		return (
 			<ExpansionPanel>
 			  <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-				<Typography className={classes.heading}>{this.props.OSCase.state}</Typography>
+				<Typography className={classes.heading}>{this.props.OSCase._id + "   " + this.props.OSCase.cpo.cpo_num + "   " + this.props.OSCase.state}</Typography>
 			  </ExpansionPanelSummary>
 			  <ExpansionPanelDetails>
 				<div>

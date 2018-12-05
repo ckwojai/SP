@@ -55,10 +55,11 @@ class OSCaseCPOForm extends Component {
 	};
 	saveRef = ref => (this.ref = ref)		
 	render() {
-		console.log(this.props.initialValues);
-		const { classes, handleSubmit } = this.props;
+        console.log("Logging InitialValues");
+	    console.log(this.props.initialValues);
+     	const { classes, handleSubmit } = this.props;
 		return (
-			<form onSubmit={handleSubmit(this.onSubmit)}>
+			<form  onSubmit={handleSubmit(this.onSubmit)}>
 			  <div>
 				<Field
 				  name="cpo.cpo_num"
@@ -113,9 +114,6 @@ class OSCaseCPOForm extends Component {
 	}
 };
 function mapStateToProps(state, ownProps) {
-	console.log("mapStateToProps right now");
-	console.log(state.OSCase[ownProps.arrIndex]);
-	console.log(state);
 	return {
 		OSCase: state.OSCase[ownProps.arrIndex],
 		initialValues: state.OSCase[ownProps.arrIndex],
@@ -125,5 +123,5 @@ function mapStateToProps(state, ownProps) {
 export default compose(
 	withStyles(styles),
 	connect(mapStateToProps, actions),
-	reduxForm({ form: 'OSCaseCPOForm'})
+    reduxForm()
 )(OSCaseCPOForm);

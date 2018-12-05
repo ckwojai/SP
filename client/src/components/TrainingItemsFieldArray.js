@@ -38,7 +38,7 @@ class TrainingItemsFieldArray extends Component {
 				Add Training Items
 			  </Button>
 			  {fields.map((training_items, index) => 
-						  <div>
+						  <li key={index}>
 								<Button variant="outlined" disabled>Item # {index + 1}</Button>				  									<Field
 										  name={`${training_items}.SKU_num`}
 										  hintText="SKU#"
@@ -62,7 +62,7 @@ class TrainingItemsFieldArray extends Component {
 												  component={TextField}
 												  />
 												<Button onClick={() => fields.remove(index)} color="secondary">Remove</Button>
-							  </div>				  
+							  </li>				  
 						 )}
 			</div>
 		);
