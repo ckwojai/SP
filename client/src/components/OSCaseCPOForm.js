@@ -51,16 +51,17 @@ class OSCaseCPOForm extends Component {
 		console.log("Inside OSCaseCPOForm onSubmit");
 		console.log(formProps);
 		const objectId = this.props.OSCase._id;
-		this.props.updateCPO(formProps, objectId);
+		this.props.updateOSCases(formProps, objectId);
 	};
 	saveRef = ref => (this.ref = ref)		
 	render() {
+		console.log(this.props.initialValues);
 		const { classes, handleSubmit } = this.props;
 		return (
 			<form onSubmit={handleSubmit(this.onSubmit)}>
 			  <div>
 				<Field
-				  name="cpo.CPO_num"
+				  name="cpo.cpo_num"
 				  hintText="CPO#"
 				  floatingLabelText="CPO#"
 				  validate={required}
@@ -68,8 +69,6 @@ class OSCaseCPOForm extends Component {
 				  withRef
 				  component={TextField}
 				  />
-			  </div>
-			  <div>
 				<Field
 				  name="cpo.issue_date"
 				  component={DatePicker}
@@ -78,8 +77,6 @@ class OSCaseCPOForm extends Component {
 				  hintText="Issue Date?"
 				  validate={required}
 				  />
-			  </div>
-			  <div>
 				<Field
 				  name="cpo.AM"
 				  component={TextField}
@@ -87,7 +84,25 @@ class OSCaseCPOForm extends Component {
 				  floatingLabelText="Accouont Manager"
 				  validate={required}
 				  >
+       			</Field>				  
+			  </div>
+			  <div>
+				<Field
+				  name="cpo.company"
+				  component={TextField}
+				  hintText="Company"
+				  floatingLabelText="Company"
+				  validate={required}
+				  >
        			</Field>
+				<Field
+				  name="cpo.end_user"
+				  component={TextField}
+				  hintText="End User"
+				  floatingLabelText="End User"
+				  validate={required}
+				  >
+       			</Field>				  				
 			  </div>
 			  <TrainingItemsFieldArray />
 				<Button type="submit" color="primary">
@@ -98,9 +113,12 @@ class OSCaseCPOForm extends Component {
 	}
 };
 function mapStateToProps(state, ownProps) {
+	console.log("mapStateToProps right now");
+	console.log(state.OSCase[ownProps.arrIndex]);
+	console.log(state);
 	return {
 		OSCase: state.OSCase[ownProps.arrIndex],
-		initialValues: state.OSCase[ownProps.arrIndex].cpo,
+		initialValues: state.OSCase[ownProps.arrIndex],
 		enableReinitialize: true
 	};
 };

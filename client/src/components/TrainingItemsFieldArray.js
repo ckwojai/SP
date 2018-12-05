@@ -39,8 +39,7 @@ class TrainingItemsFieldArray extends Component {
 			  </Button>
 			  {fields.map((training_items, index) => 
 						  <div>
-								<Button color="primary">Training item # {index + 1}</Button>				  
-									<Field
+								<Button variant="outlined" disabled>Item # {index + 1}</Button>				  									<Field
 										  name={`${training_items}.SKU_num`}
 										  hintText="SKU#"
 										  floatingLabelText="SKU#"

@@ -171,6 +171,8 @@ class CPOUpdateForm extends Component {
 	}
 };
 function mapStateToProps(state, ownProps) {
+	console.log("mapStateToProps right now");
+	console.log(state.CPO[ownProps.arrIndex]);
 	return {CPO: state.CPO,
 			people: state.people,
 			initialValues: state.CPO[ownProps.arrIndex],
