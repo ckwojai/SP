@@ -14,6 +14,8 @@ import * as actions from "../actions";
 import OSCaseStepper from './OSCaseStepper.js';
 import CPOUpdateForm from './CPOUpdateForm.js';
 import OSCaseCPOForm from './OSCaseCPOForm.js';
+import OSCaseScheduleForm from './OSCaseScheduleForm.js';
+
 
 const styles = theme => ({
 	root: {
@@ -28,11 +30,26 @@ const styles = theme => ({
 class OSCaseContent extends Component {
 	render() {
 		const { classes } = this.props;
+        switch (this.props.OSCase.state) {
+        case 0:
 		return (
-				<div>
-				  <OSCaseCPOForm form={`OSCaseCPOForm_${this.props.arrIndex}`} arrIndex={this.props.arrIndex}/>
-				</div>
+			<div>
+			  <OSCaseCPOForm form={`OSCaseCPOForm_${this.props.arrIndex}`} arrIndex={this.props.arrIndex}/>
+			</div>
 		);
+        case 1:
+            return (
+				<div>
+				  <OSCaseScheduleForm form={`OSCaseScheduleform_${this.props.arrIndex}`} arrIndex={this.props.arrIndex}/>
+				</div>                
+            );
+        default:
+            return (
+                <div>
+                  Default Case man
+                </div>
+            );
+        }
 	}
 }
 

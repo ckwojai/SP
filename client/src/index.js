@@ -21,6 +21,7 @@ import OSCaseTable from './components/OSCaseTable.js';
 import TrainingItemsFieldArray from './components/TrainingItemsFieldArray.js';
 import reducers from './reducers';
 import OSCaseContent from './components/OSCaseContent.js';
+import OSCaseScheduleForm from './components/OSCaseScheduleForm.js';
 
 const store = createStore(
 	reducers,

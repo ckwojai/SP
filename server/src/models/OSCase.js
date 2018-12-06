@@ -29,7 +29,8 @@ const address_object = {
 };
 
 const training_details_object = {
-	date: { type: String},
+	start_date: { type: String},
+    end_date: { type: String},
 	trainer: { type: String},
 	location: address_object,
 	poc: { type: String}
