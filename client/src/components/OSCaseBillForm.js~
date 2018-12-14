@@ -92,8 +92,8 @@ class OSCaseScheduleForm extends Component {
 			  <div>
 				<Field
 				  name="training_details.location.name"
-				  hintText="Training Address"
-				  floatingLabelText="Training Address"
+				  hintText="Name"
+				  floatingLabelText="Bill-to Address"
 				  validate={required}
 				  ref={this.saveRef}
 				  withRef

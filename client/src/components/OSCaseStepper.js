@@ -65,9 +65,12 @@ class OSCaseStepper extends React.Component {
 	};
 
 	handleReset = () => {
-		this.setState({
-			activeStep: 0,
-		});
+		const formProps = {state: 0};
+		this.props.updateOSCases(formProps, this.props.OSCase._id);
+		this.setState(state => ({
+			activeStep: 0
+		}));				
+
 	};
 
 	render() {

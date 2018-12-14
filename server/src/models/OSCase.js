@@ -40,6 +40,7 @@ const srm_object = {
 	spo_num: { type: String},
 	tq_num: { type: String},
 	proposed_amount: { type: Number},
+	invoiced_num: { type: String},	
 	invoiced_amount: { type: Number},
 	gr_num: { type: Number},
 	processed_date: { type: String}

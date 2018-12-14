@@ -3,7 +3,14 @@
    - Create CPO
 
 * Data Structure
-* State 1: Customer
+* Extra Implementation
+** Server-side error handling
+** Sever and client side Form validation
+** Email Functionality
+* Functionality
+** Cases Sorting  
+** Create Case Summary
+* State 0: Customer
   - Billing
 	+ SAP
 	  - SAP#
@@ -20,7 +27,7 @@
 	  - SKU #
 	  - Cost
 
-* Stage 2: Trainer
+* Stage 1: Trainer
   - Training Details
 	+ Date
 	+ Trainer
@@ -33,7 +40,7 @@
 	  - Proposed Amount
 	+ 
 	
-* Stage 3: Billing
+* Stage 2: Billing
   - Billing
 	+ SAP
 	  - Exact T&E
@@ -44,3 +51,5 @@
 	  - GR#
 	  - Processed Date
 		
+* Final State: Create Documents 
+  - 

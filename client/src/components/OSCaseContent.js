@@ -15,7 +15,8 @@ import OSCaseStepper from './OSCaseStepper.js';
 import CPOUpdateForm from './CPOUpdateForm.js';
 import OSCaseCPOForm from './OSCaseCPOForm.js';
 import OSCaseScheduleForm from './OSCaseScheduleForm.js';
-
+import OSCaseBillForm from './OSCaseBillForm.js';
+import OSCaseReport from './OSCaseReport.js';
 
 const styles = theme => ({
 	root: {
@@ -40,9 +41,23 @@ class OSCaseContent extends Component {
         case 1:
             return (
 				<div>
-				  <OSCaseScheduleForm form={`OSCaseScheduleform_${this.props.arrIndex}`} arrIndex={this.props.arrIndex}/>
+				  <OSCaseScheduleForm form={`OSCaseScheduleForm_${this.props.arrIndex}`} arrIndex={this.props.arrIndex}/>
 				</div>                
             );
+        case 2:
+            return (
+				<div>
+				  <OSCaseBillForm form={`OSCaseBillForm_${this.props.arrIndex}`} arrIndex={this.props.arrIndex}/>
+				</div>                
+            );
+        case 3:
+            return (
+				<div>				
+				  <h3>All done. Please select what you want to do below.</h3>
+				  <OSCaseReport arrIndex={this.props.arrIndex} />
+				</div>                
+            );			
+			
         default:
             return (
                 <div>

@@ -22,6 +22,9 @@ import TrainingItemsFieldArray from './components/TrainingItemsFieldArray.js';
 import reducers from './reducers';
 import OSCaseContent from './components/OSCaseContent.js';
 import OSCaseScheduleForm from './components/OSCaseScheduleForm.js';
+import OSCaseReport from './components/OSCaseReport.js';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const store = createStore(
 	reducers,
@@ -40,8 +43,8 @@ ReactDOM.render(
 			<Route path="/personlist" component={PersonList} />		  
 			<Route path="/CPOList" component={CPOList} />
 			<Route path="/CPOTable" component={CPOTable} />		  		  
-			<Route path="/test" component={OSCaseTable} />
-			<Route path="/sidebar" component={SideBar} />		  		  
+			<Route path="/sidebar" component={SideBar} />
+			<Route path="/test" render={() => <OSCaseReport arrIndex="0" />} />		  			
 		  </App>
 		</BrowserRouter>
 	  </MuiThemeProvider>	  
