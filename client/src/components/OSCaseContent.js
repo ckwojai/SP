@@ -16,7 +16,7 @@ import CPOUpdateForm from './CPOUpdateForm.js';
 import OSCaseCPOForm from './OSCaseCPOForm.js';
 import OSCaseScheduleForm from './OSCaseScheduleForm.js';
 import OSCaseBillForm from './OSCaseBillForm.js';
-import OSCaseReport from './OSCaseReport.js';
+import OSCaseReportDialog from './OSCaseReportDialog.js';
 
 const styles = theme => ({
 	root: {
@@ -54,7 +54,7 @@ class OSCaseContent extends Component {
             return (
 				<div>				
 				  <h3>All done. Please select what you want to do below.</h3>
-				  <OSCaseReport arrIndex={this.props.arrIndex} />
+				  <OSCaseReportDialog arrIndex={this.props.arrIndex} />
 				</div>                
             );			
 			

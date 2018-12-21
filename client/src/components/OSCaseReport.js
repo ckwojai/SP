@@ -3,13 +3,18 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import * as actions from "../actions";
 
+function stringToDate(date_string) {
+	const date_object = new Date(date_string);
+	return date_object.getFullYear() + "-" + date_object.getMonth() + "-" + date_object.getDate();
+};
+
 class OSCaseReport extends Component {
 	componentDidMount() {
 		this.props.fetchOSCases();
 	}
 	render() {
 		const {sap, srm} = this.props.OSCase.billing;
-		const {cpo} = this.props.OSCase;
+		const {training_details, cpo} = this.props.OSCase;
 		return (
 			<div className="container">
 			  <div className="row">
@@ -24,9 +29,9 @@ class OSCaseReport extends Component {
 						<div className="card-body">
 						  <strong>SAP#: </strong>{sap.sap_num}<br />
 						  <strong>PO#: </strong>{cpo.cpo_num}<br />
-						  <strong>Entry Date: </strong>12/19/2018<br />					  						  						  
-						  <strong>Sold-To#: </strong>1111<br />
-						  <strong>Ship-To#: </strong>2222<br />
+						  <strong>Entry Date: </strong>{stringToDate(sap.processed_date)}<br />					  						  						  
+						  <strong>Sold-To#: </strong>{sap.sold_to_num}<br />
+						  <strong>Ship-To#: </strong>{sap.ship_to_num}<br />
 						</div>
 					  </div>
 					</div>
@@ -34,11 +39,11 @@ class OSCaseReport extends Component {
 					  <div className="card height">
 						<div className="card-header">Training Details</div>
 						<div className="card-body">
-						  <strong>Type: </strong>MVS3000 3-Day Ops<br />
-						  <strong>Date: </strong>12/01/2019 - 12/04/2019<br />
-						  <strong>Location: </strong>San Francisco<br />					  						  						  						  						  
-						  <strong>PoC: </strong>Joe Durant<br />
-						  <strong>Trainer: </strong>Glenn Hill<br />					  						  						  
+						  <strong>Company: </strong>{cpo.company}<br />
+						  <strong>Date: </strong>{stringToDate(training_details.start_date) + " to " + stringToDate(training_details.end_date)}<br />
+						  <strong>Location: </strong>{training_details.location.city}<br />					  						  						  						  						  
+						  <strong>PoC: </strong>{training_details.poc}<br />
+						  <strong>Trainer: </strong>{training_details.trainer}<br />					  						  						  
 						</div>
 					  </div>
 					</div>
@@ -48,9 +53,9 @@ class OSCaseReport extends Component {
 						<div className="card-body">
 						  <strong>SPO#: </strong>{srm.spo_num}<br />
 						  <strong>GR#: </strong>{srm.gr_num}<br />
-						  <strong>Processed Date: </strong>12/16/2019<br />					  						  						  						  
-						  <strong>Quote Amount: </strong>$3240<br />
-						  <strong>Invoice Amount: </strong>$3000<br />
+						  <strong>Processed Date: </strong>{stringToDate(srm.processed_date)}<br />					  						  						  						  
+						  <strong>Quote Amount: </strong>{"$" + srm.proposed_amount}<br />
+						  <strong>Invoice Amount: </strong>{"$" + srm.invoiced_amount}<br />
 						</div>						  
 					  </div>
 					</div>
@@ -70,9 +75,7 @@ class OSCaseReport extends Component {
 							<tr>
 							  <td><strong>Item Name</strong>
 							  </td>
-							  <td className="text-center"><strong>Item Price</strong>
-							  </td>
-							  <td className="text-center"><strong>Item Quantity</strong>
+							  <td className="text-center"><strong>Item Number</strong>
 							  </td>
 							  <td className="text-right"><strong>Total</strong>
 							  </td>
@@ -82,42 +85,31 @@ class OSCaseReport extends Component {
 							<tr>
 							  <td>Samsung Galaxy S5</td>
 							  <td className="text-center">$900</td>
-							  <td className="text-center">1</td>
 							  <td className="text-right">$900</td>
 							</tr>
 							<tr>
 							  <td>Samsung Galaxy S5 Extra Battery</td>
 							  <td className="text-center">$30.00</td>
-							  <td className="text-center">1</td>
 							  <td className="text-right">$30.00</td>
 							</tr>
 							<tr>
-							  <td>Screen protector</td>
-							  <td className="text-center">$7</td>
-							  <td className="text-center">4</td>
-							  <td className="text-right">$28</td>
-							</tr>
-							<tr>
 							  <td className="highrow"></td>
-							  <td className="highrow"></td>
-							  <td class="highrow text-center"><strong>Subtotal</strong>
+							  <td className="highrow text-center"><strong>Subtotal</strong>
 							  </td>
-							  <td class="highrow text-right">$958.00</td>
+							  <td className="highrow text-right">$958.00</td>
 							</tr>
 							<tr>
-							  <td class="emptyrow"></td>
-							  <td class="emptyrow"></td>
-							  <td class="emptyrow text-center"><strong>Shipping</strong>
+							  <td className="emptyrow"></td>
+							  <td className="emptyrow text-center"><strong>Shipping</strong>
 							  </td>
-							  <td class="emptyrow text-right">$20</td>
+							  <td className="emptyrow text-right">$20</td>
 							</tr>
 							<tr>
-							  <td class="emptyrow"><i class="fa fa-barcode iconbig"></i>
+							  <td className="emptyrow"><i className="fa fa-barcode iconbig"></i>
 							  </td>
-							  <td class="emptyrow"></td>
-							  <td class="emptyrow text-center"><strong>Total</strong>
+							  <td className="emptyrow text-center"><strong>Total</strong>
 							  </td>
-							  <td class="emptyrow text-right">$978.00</td>
+							  <td className="emptyrow text-right">$978.00</td>
 							</tr>
 						  </tbody>
 						</table>
