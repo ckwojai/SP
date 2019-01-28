@@ -1,8 +1,12 @@
 import axios from 'axios';
 import { NEW_PERSON, NEW_CPO, FETCH_PEOPLE, FETCH_CPO, UPDATE_CPO, FETCH_OSCASES, UPDATE_OSCASES, NEW_OSCASE } from './types.js';
 
+const instance = axios.create({baseURL: process.env.REACT_APP_BASE_URL});
+
 export const newOSCase = (formProps) => async dispatch => {
-	const response = await axios.post('http://localhost:3090/api/OSCase', formProps);
+	console.log("Inside new OS Case Action Creator");
+	console.log(process.env.REACT_APP_BASE_URL);
+	const response = await instance.post({url: '/api/OSCase', baseURL: process.env.REACT_APP_BASE_URL}, formProps);
 	dispatch(
 		{
 			type: NEW_OSCASE,
@@ -12,7 +16,7 @@ export const newOSCase = (formProps) => async dispatch => {
 	dispatch(fetchOSCases());
 };
 export const newCPO = (formProps) => async dispatch => {
-	const response = await axios.post('http://localhost:3090/api/CPO', formProps);
+	const response = await instance.post('/api/CPO', formProps);
 	dispatch(
 		{
 			type: NEW_CPO,
@@ -23,7 +27,7 @@ export const newCPO = (formProps) => async dispatch => {
 };
 export const fetchOSCases = () => async dispatch => {
 	console.log("inside fetchCases");	
-	const response = await axios.get('http://localhost:3090/api/OSCase');
+	const response = await instance.get('/api/OSCase');
 	console.log(response.data);
 	dispatch(
 		{
@@ -34,7 +38,7 @@ export const fetchOSCases = () => async dispatch => {
 };
 
 export const updateOSCases = (formProps, id) => async dispatch => {
-	const response = await axios.put('http://localhost:3090/api/OSCase/' + id, formProps);
+	const response = await instance.put('/api/OSCase/' + id, formProps);
 	dispatch(
 		{
 			type: UPDATE_OSCASES,
@@ -47,7 +51,7 @@ export const updateOSCases = (formProps, id) => async dispatch => {
 
 export const fetchCPO = () => async dispatch => {
 	console.log("inside fetchCPO");	
-	const response = await axios.get('http://localhost:3090/api/cpo');
+	const response = await instance.get('/api/cpo');
 	console.log(response.data);
 	dispatch(
 		{
@@ -57,7 +61,7 @@ export const fetchCPO = () => async dispatch => {
 	);
 };
 export const updateCPO = (formProps, id) => async dispatch => {
-	const response = await axios.put('http://localhost:3090/api/CPO/' + id, formProps);
+	const response = await instance.put('/api/CPO/' + id, formProps);
 	dispatch(
 		{
 			type: UPDATE_CPO,
@@ -68,7 +72,7 @@ export const updateCPO = (formProps, id) => async dispatch => {
 };
 
 export const newperson = (formProps) => async dispatch => {
-	const response = await axios.post('http://localhost:3090/api/person', formProps);
+	const response = await instance.post('/api/person', formProps);
 	dispatch(
 		{
 			type: NEW_PERSON,
@@ -80,7 +84,7 @@ export const newperson = (formProps) => async dispatch => {
 
 export const fetchPeople = () => async dispatch => {
 	console.log("inside fetchPeople");	
-	const response = await axios.get('http://localhost:3090/api/person');
+	const response = await instance.get('/api/person');
 	console.log(response.data);
 	dispatch(
 		{

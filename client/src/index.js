@@ -37,6 +37,7 @@ ReactDOM.render(
 	  <MuiThemeProvider muiTheme={getMuiTheme()}>
 		<BrowserRouter>
 		  <App>
+			{console.log(process.env.REACT_APP_BASE_URL)}
 			<Route path="/" exact component={OSCaseTable} />			
 			<Route path="/newperson" component={PersonForm} />
 			<Route path="/newcpo" component={CPOForm} />		  
@@ -44,7 +45,7 @@ ReactDOM.render(
 			<Route path="/CPOList" component={CPOList} />
 			<Route path="/CPOTable" component={CPOTable} />		  		  
 			<Route path="/sidebar" component={SideBar} />
-			<Route path="/test" render={() => <OSCaseReport arrIndex="0" />} />		  			
+			<Route path="/test" component={OSCaseTable} />
 		  </App>
 		</BrowserRouter>
 	  </MuiThemeProvider>	  
