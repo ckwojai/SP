@@ -6,7 +6,7 @@ const instance = axios.create({baseURL: process.env.REACT_APP_BASE_URL});
 export const newOSCase = (formProps) => async dispatch => {
 	console.log("Inside new OS Case Action Creator");
 	console.log(process.env.REACT_APP_BASE_URL);
-	const response = await instance.post({url: '/api/OSCase', baseURL: process.env.REACT_APP_BASE_URL}, formProps);
+	const response = await instance.post('/api/OSCase', formProps);
 	dispatch(
 		{
 			type: NEW_OSCASE,
